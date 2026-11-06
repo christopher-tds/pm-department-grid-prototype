@@ -19,9 +19,10 @@ Live at https://christopher-tds.github.io/pm-department-grid-prototype/ (GitHub 
   in each collection's merch order. Each of the 12 categories gets a share in line with how many
   styles it has, never less than one, and the categories are interleaved so the grid reads as a mix.
   `GRID_SIZE` in `app.js` sets the cap.
-- **Toolbar:** Filter and Sort only. The grid size and Product / On figure pickers are still in the
-  markup, hidden (`hidden` on `#grid-size` and `#view`, `SHOW_VIEW` in `app.js` for the panel).
-- **Filter panel:** Category (12) and Line (Pro, Core), with counts and a live "Show N products"
+- **Toolbar:** same as the PLP prototype. Filter, grid size (3, 4, 6 or Index), Product / On figure
+  and Sort on desktop. Tablet and mobile show Filter and Sort, and the view picker moves into the
+  filter panel.
+- **Filter panel:** View (tablet and mobile), Category (12) and Line (Pro, Core), with counts and a live "Show N products"
   button. A side panel on desktop, a bottom sheet on tablet and mobile.
 - **Sort:** Featured (the mix order), price low to high, price high to low.
 - **Cards:** same as the PLP prototype. Tapping a swatch swaps the tile in place; hovering previews

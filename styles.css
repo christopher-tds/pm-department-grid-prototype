@@ -236,10 +236,6 @@ a { color: inherit; }
   top: 0;
   z-index: 10;
 }
-/* Grid size and view pickers are hidden for now (index.html), so Filter sits left and Sort right at
-   every size. */
-.toolbar { grid-template-columns: auto 1fr; }
-.toolbar__group[hidden] { display: none; }
 .toolbar__group { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
 .toolbar__label { color: var(--text-2); }
 .toolbar__label--ink { color: var(--ink); }
@@ -529,8 +525,10 @@ a { color: inherit; }
   .nav__menu img { width: 20px; height: 20px; }
   .nav__secondary { gap: 10px; }
 
-  /* Tablet and mobile toolbar: Filter and Sort only. */
-  .toolbar { column-gap: 12px; }
+  /* Tablet and mobile toolbar: Filter and Sort only. The grid is 2 columns and View moves into the
+     filter panel. */
+  .toolbar { grid-template-columns: auto 1fr; column-gap: 12px; }
+  #grid-size, #view { display: none; }
   .sort__btn, .sort__menu button { min-height: 48px; }
 
   /* Filter panel becomes an action sheet that pushes up from the bottom. */

@@ -73,8 +73,8 @@
     tablet: { options: [2, "index"], fallback: 2, index: 6 },
     mobile: { options: [1, 2, "index"], fallback: 2, index: 3 },
   };
-  // The Product / On figure view picker is hidden for now; set this to show it in the filter panel.
-  const SHOW_VIEW = false;
+  // Shows the Product / On figure picker in the filter panel (tablet and mobile use it there).
+  const SHOW_VIEW = true;
 
   const mqDesktop = matchMedia("(min-width: 990px)");
   const mqTablet = matchMedia("(min-width: 750px)");

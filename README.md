@@ -5,6 +5,8 @@ but swaps the per-category sections for one mixed product grid, with the toolbar
 card from the Men's Jerseys PLP prototype (`pm-plp-prototype`). The demo is that you start on "all"
 and can narrow it down to what you're after. Built on the live US catalog.
 
+Live at https://christopher-tds.github.io/pm-department-grid-prototype/ (GitHub Pages from `main`).
+
 ## What it does
 
 - **Header:** "Men" with the number of products in the grid, then the category carousel: one card
@@ -54,5 +56,4 @@ the browser from that data, so a refresh updates it too. Needs Pillow (`pip inst
 - Product images load from Shopify's CDN; nothing is copied into the repo.
 - Some products live in two collections (a cap in both Headwear and Cycling caps), so the category
   counts add up to a little more than 56.
-- `assets/og-image.jpg` is still the department prototype's share image; regenerate it before
-  sharing the link.
+- The share image (`assets/og-image.jpg`, 1200 × 630) is a capture of the page top with `?clean=1`.

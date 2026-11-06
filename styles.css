@@ -321,7 +321,7 @@ a { color: inherit; }
 .card__link { display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: inherit; }
 .card__media {
   position: relative;
-  aspect-ratio: 345 / 410;
+  aspect-ratio: 4 / 5; /* PM-5 */
   background: var(--card);
   overflow: hidden;
 }

@@ -67,7 +67,7 @@
   })();
 
   // Breakpoints (PM-3): mobile under 750, tablet 750–989, desktop 990 and up. The grid size picker
-  // is hidden for now (index.html), so each size sits on its default.
+  // shows on desktop only; below 990 the grid sits on its default.
   const LAYOUTS = {
     desktop: { options: [3, 4, 6, "index"], fallback: 4, index: 8 },
     tablet: { options: [2, "index"], fallback: 2, index: 6 },
@@ -479,7 +479,7 @@
   });
 
   // View lives in the toolbar (desktop and tablet) and in the filter panel (all sizes); both stay in
-  // sync. Both are hidden for now.
+  // sync. Below 990 only the filter panel's picker shows.
   function setView(view) {
     state.view = view;
     document.querySelectorAll("[data-view]").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.view === view)));

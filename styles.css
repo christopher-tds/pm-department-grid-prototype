@@ -221,6 +221,8 @@ a { color: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .dept-section__arrow svg { animation: none !important; }
+  /* No hover zoom on category cards; the dim still fades. */
+  .cat:hover img { transform: none; }
 }
 
 /* ---------- Toolbar (Toolbar E v3) ---------- */

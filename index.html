@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Men · Pedal Mafia department grid prototype</title>
+  <meta name="description" content="Coded prototype of the Pedal Mafia Men's department page: a category carousel over one mixed product grid you can filter down, built on the live US catalog.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pedal Mafia Men's department grid prototype">
+  <meta property="og:description" content="Coded prototype of the Pedal Mafia Men's department page: a category carousel over one mixed product grid you can filter down, built on the live US catalog.">
+  <meta property="og:url" content="https://christopher-tds.github.io/pm-department-grid-prototype/">
+  <meta property="og:image" content="https://christopher-tds.github.io/pm-department-grid-prototype/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Men's department page with the category carousel: Jerseys, Bibs, Base layers and Vests">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#grid">Skip to products</a>
+
+  <header class="site-header">
+    <div class="announce">SPEND $99 MORE FOR FREE SHIPPING</div>
+    <nav class="nav" aria-label="Main">
+      <button class="icon-btn nav__menu" type="button" aria-label="Open menu">
+        <img src="assets/icons/list.svg" alt="" width="24" height="24">
+      </button>
+      <a class="logo" href="https://usa.pedalmafia.cc/" aria-label="Pedal Mafia home">
+        <img class="logo__mark" src="assets/icons/logo-mark.svg" alt="">
+        <img class="logo__word" src="assets/icons/logo-word.svg" alt="">
+      </a>
+      <ul class="nav__list">
+        <li><a href="#">NEW &amp; FEATURED</a></li>
+        <li><a href="#" aria-current="page">MEN</a></li>
+        <li><a href="#">WOMEN</a></li>
+        <li><a href="#">ACCESSORIES</a></li>
+        <li><a href="#">ARCHIVE SALE</a></li>
+        <li><a href="#">CUSTOM APPAREL</a></li>
+      </ul>
+      <div class="nav__secondary">
+        <a class="nav__text" href="#">About</a>
+        <a class="nav__text" href="#">Help</a>
+        <a class="icon-btn" href="#" aria-label="Search"><img src="assets/icons/search.svg" alt="" width="24" height="24"></a>
+        <a class="icon-btn nav__account" href="#" aria-label="Account"><img src="assets/icons/account.svg" alt="" width="24" height="24"></a>
+        <a class="icon-btn" href="#" aria-label="Cart"><img src="assets/icons/cart.svg" alt="" width="24" height="24"></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="collection-header collection-header--dept">
+      <div class="collection-header__top">
+        <h1 class="collection-header__title">Men <span class="collection-header__count" id="count"></span></h1>
+        <div class="cats__arrows" id="cats-arrows" hidden>
+          <button class="icon-btn" type="button" data-dir="-1" aria-label="Scroll categories left"><img src="assets/icons/caret-left.svg" alt="" width="24" height="24"></button>
+          <button class="icon-btn" type="button" data-dir="1" aria-label="Scroll categories right"><img src="assets/icons/caret-right.svg" alt="" width="24" height="24"></button>
+        </div>
+      </div>
+      <nav class="cats" aria-label="Men's categories">
+        <ul class="cats__track" id="cats"></ul>
+        <div class="cats__progress" id="cats-progress" hidden><span></span></div>
+      </nav>
+    </section>
+
+    <div class="toolbar" role="toolbar" aria-label="Product grid controls">
+      <div class="toolbar__filter">
+        <button class="pill" type="button" id="filter-open" aria-haspopup="dialog" aria-controls="filters">
+          <img src="assets/icons/sliders-horizontal.svg" alt="" width="16" height="16">
+          <span>Filter<span id="filter-count"></span></span>
+        </button>
+      </div>
+      <!-- Grid size and view pickers: hidden for now, may come back. -->
+      <div class="toolbar__group" id="grid-size" aria-label="Grid size" hidden>
+        <span class="toolbar__label">Grid</span>
+      </div>
+      <div class="toolbar__group" id="view" aria-label="Image view" hidden>
+        <span class="toolbar__label">View</span>
+        <button class="opt" type="button" data-view="product" aria-pressed="true">Product</button>
+        <button class="opt" type="button" data-view="figure" aria-pressed="false">On figure</button>
+      </div>
+      <div class="toolbar__sort">
+        <span class="toolbar__label toolbar__label--ink">Sort</span>
+        <div class="sort">
+          <button class="sort__btn" type="button" id="sort-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sort-menu">Featured</button>
+          <ul class="sort__menu" id="sort-menu" role="menu" hidden>
+            <li role="none"><button role="menuitemradio" type="button" data-sort="featured" aria-checked="true">Featured</button></li>
+            <li role="none"><button role="menuitemradio" type="button" data-sort="price-asc" aria-checked="false">Price, low to high</button></li>
+            <li role="none"><button role="menuitemradio" type="button" data-sort="price-desc" aria-checked="false">Price, high to low</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="grid" data-cols="4" data-view="product" aria-live="polite"></div>
+    <p class="empty" id="empty" hidden>No products match these filters. <button class="link" type="button" id="empty-clear">Clear filters</button></p>
+  </main>
+
+  <dialog class="drawer" id="filters" aria-labelledby="filters-title">
+    <form method="dialog" class="drawer__inner" id="filter-form">
+      <div class="drawer__grabber" aria-hidden="true"></div>
+      <div class="drawer__head">
+        <h2 id="filters-title">Filter</h2>
+        <button class="icon-btn" type="submit" value="close" aria-label="Close filters"><img src="assets/icons/x.svg" alt="" width="24" height="24"></button>
+      </div>
+      <div class="drawer__body" id="filter-groups"></div>
+      <div class="drawer__foot">
+        <button class="link" type="button" id="filter-clear">Clear all</button>
+        <button class="button" type="submit" value="apply" id="filter-apply">Show products</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="preview.js"></script>
+  <script src="tuner.js"></script> <!-- TEMPORARY transition tuner -->
+  <script src="cards-tuner.js"></script> <!-- TEMPORARY card size panel -->
+</body>
+</html>
